@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { Input, Button } from "antd";
 import "antd/dist/antd.css";
+// import UserModel from "../../../Models/UserModel";
 
 const DEFAULT_STATE = {
-  // user: { ...new UserModel() },
+  username: "",
+  password: "",
 };
 export class Home extends Component {
   state = {
     ...DEFAULT_STATE,
-    username: "",
-    password: "",
   };
   static displayName = Home.name;
 
@@ -19,20 +19,26 @@ export class Home extends Component {
     });
   }
 
+  loginAction() {
+    // let user = new UserModel(this.state.username, this.state.password);
+  }
+
   render() {
     return (
       <div>
         <Input
           placeholder="UserName"
           value={this.state.username}
-          // onChange={this.setState({})}
+          onChange={() => this.setState({ username: this.value })}
         />
         <Input
           placeholder="Password"
           value={this.state.password}
-          onChange={this.passwordChange}
+          onChange={() => this.setState({ password: this.value })}
+          type="password"
         />
         <Button onClick={null}>Login</Button>
+        <Button onClick={null}>Register</Button>
       </div>
     );
   }
