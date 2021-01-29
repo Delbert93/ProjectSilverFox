@@ -19,8 +19,12 @@ export class Home extends Component {
     });
   }
 
-  loginAction() {
+  loginClick() {
     // let user = new UserModel(this.state.username, this.state.password);
+    //TO DO
+    //check origin and syntax
+    //package info
+    //send to api
   }
 
   render() {
@@ -37,8 +41,8 @@ export class Home extends Component {
           onChange={() => this.setState({ password: this.value })}
           type="password"
         />
-        <Button onClick={null}>Login</Button>
-        <Button onClick={null}>Register</Button>
+        <Button onClick={this.loginClick}>Login</Button>
+        <Button onClick={this.registerClick}>Register</Button>
       </div>
     );
   }
