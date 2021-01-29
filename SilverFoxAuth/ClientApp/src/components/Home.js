@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { Input, Button } from "antd";
+import { Input, Button, Card } from "antd";
 import "antd/dist/antd.css";
+import axios from "axios";
+import "../CSS/Login.css";
 // import UserModel from "../../../Models/UserModel";
 
 const DEFAULT_STATE = {
@@ -25,11 +27,22 @@ export class Home extends Component {
     //check origin and syntax
     //package info
     //send to api
+    axios.get("LOGIN_API").then((res) => {
+      const isValidUser = res.status;
+      this.setState({ isValidUser });
+    });
+  }
+
+  registerClick() {
+    axios.post("REGISTER_API").then((res) => {
+      const persons = res.data;
+      this.setState({ persons });
+    });
   }
 
   render() {
     return (
-      <div>
+      <Card title="Login" style={{ width: "400px" }}>
         <Input
           placeholder="UserName"
           value={this.state.username}
@@ -43,7 +56,7 @@ export class Home extends Component {
         />
         <Button onClick={this.loginClick}>Login</Button>
         <Button onClick={this.registerClick}>Register</Button>
-      </div>
+      </Card>
     );
   }
 }
