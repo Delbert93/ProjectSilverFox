@@ -17,23 +17,19 @@ namespace SilverFoxAuth.Models
         public bool ValidatePassword(string password)
         {
 
-            var hasNumber = new Regex(@"[0-9]+");
-            var hasUpperChar = new Regex(@"[A-Z]+");
-            var hasMinimum8Chars = new Regex(@".{8,}");
+            Regex objAlphaPattern = new Regex(@"^[a-zA-Z0-9]*$");
+            var hasMinimum12Chars = new Regex(@".{12,}");
 
-            var isValidated = hasNumber.IsMatch(password) && hasUpperChar.IsMatch(password) && hasMinimum8Chars.IsMatch(password);
+            var isValidated = objAlphaPattern.IsMatch(password) && hasMinimum12Chars.IsMatch(password);
             return isValidated;
         }
 
         public bool ValidateUsername(string username)
         {
 
-            var hasNumber = new Regex(@"[0-9]+");
-            var hasUpperChar = new Regex(@"[A-Z]+");
+            Regex objAlphaPattern = new Regex(@"^[a-zA-Z0-9]*$");
             var hasMinimum8Chars = new Regex(@".{8,}");
-            var hasMaximum16Chars = new Regex(@".{,16}");
-
-            var isValidated = hasNumber.IsMatch(username) && hasUpperChar.IsMatch(username) && hasMinimum8Chars.IsMatch(username);
+            var isValidated = objAlphaPattern.IsMatch(username) && hasMinimum8Chars.IsMatch(username);
             return isValidated;
         }
     }
