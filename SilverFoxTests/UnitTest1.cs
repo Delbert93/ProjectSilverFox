@@ -25,11 +25,11 @@ namespace SilverFoxTests
         [TestMethod]
         public void ValidatePassword()
         {
-            string badLengthPassword = "hellow";
+            string passwordThatIsToShort = "hellow";
             string goodPassword = "mckinninLloyd12";
             UserModel userModel = new UserModel();
 
-            userModel.ValidatePassword(badLengthPassword);
+            userModel.ValidatePassword(passwordThatIsToShort);
             Assert.IsFalse(userModel.isValidPassword);
             userModel.ValidatePassword(goodPassword);
             Assert.IsTrue(userModel.isValidPassword);

@@ -21,7 +21,7 @@ namespace SilverFoxAuth.Models
 
         public void ValidatePassword(string _password)
         {
-
+            
             Regex objAlphaPattern = new Regex(@"^[a-zA-Z0-9]*$");
             var hasMinimum12Chars = new Regex(@".{12,}");
 
