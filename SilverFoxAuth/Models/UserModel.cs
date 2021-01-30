@@ -14,6 +14,7 @@ namespace SilverFoxAuth.Models
         //strings are automatically immutable, but c#, under the hood, makes it seem like you can change it, when it's really just creating a new string
         private string username;
         private string password;
+        public int Id { get; set; }
         public bool readFlag = false;
         public bool isValidPassword;
         public bool isValidUsername;
