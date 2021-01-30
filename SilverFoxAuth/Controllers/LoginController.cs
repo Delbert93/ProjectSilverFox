@@ -27,24 +27,24 @@ namespace SilverFoxAuth.Controllers
             {
                 string username = "";
                 string password = "";
-                if (User.ValidateUsername(username) && User.ValidatePassword(password))
-                {
-                    //using (DB_Entities db = new DB_Entities())
-                    //{
-                    //    var obj = db.UserProfiles.Where(a => a.UserName.Equals(User.username) && a.Password.Equals(User.password)).FirstOrDefault();
-                    //    if (obj != null)
-                    //    {
-                    //        Session["UserID"] = obj.UserId.ToString();
-                    //        Session["UserName"] = obj.UserName.ToString();
-                    //        return RedirectToAction("UserDashBoard");
-                    //    }
-                    //}
+                //if (User.ValidateUsername(username) && User.ValidatePassword(password))
+                //{
+                //    //using (DB_Entities db = new DB_Entities())
+                //    //{
+                //    //    var obj = db.UserProfiles.Where(a => a.UserName.Equals(User.username) && a.Password.Equals(User.password)).FirstOrDefault();
+                //    //    if (obj != null)
+                //    //    {
+                //    //        Session["UserID"] = obj.UserId.ToString();
+                //    //        Session["UserName"] = obj.UserName.ToString();
+                //    //        return RedirectToAction("UserDashBoard");
+                //    //    }
+                //    //}
                      
-                }
-                else
-                {
-                    Console.WriteLine("Back Off Hacker");
-                }
+                //}
+                //else
+                //{
+                //    Console.WriteLine("Back Off Hacker");
+                //}
                
             }
             return View();

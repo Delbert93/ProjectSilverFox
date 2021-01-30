@@ -13,10 +13,13 @@ namespace SilverFoxTests
             string badCharUserName = "hellooooow!";
             string goodUserName = "mckinnin";
             UserModel userModel = new UserModel();
-            
-            Assert.IsFalse(userModel.ValidateUsername(badLengthUserName));
-            Assert.IsFalse(userModel.ValidateUsername(badCharUserName));
-            Assert.IsTrue(userModel.ValidateUsername(goodUserName));
+
+            userModel.ValidateUsername(badLengthUserName);
+            Assert.IsFalse(userModel.isValidUsername);
+            userModel.ValidateUsername(badCharUserName);
+            Assert.IsFalse(userModel.isValidUsername);
+            userModel.ValidateUsername(goodUserName);
+            Assert.IsTrue(userModel.isValidUsername);
         }
 
         [TestMethod]
@@ -26,8 +29,23 @@ namespace SilverFoxTests
             string goodPassword = "mckinninLloyd12";
             UserModel userModel = new UserModel();
 
-            Assert.IsFalse(userModel.ValidatePassword(badLengthPassword));
-            Assert.IsTrue(userModel.ValidatePassword(goodPassword));
+            userModel.ValidatePassword(badLengthPassword);
+            Assert.IsFalse(userModel.isValidPassword);
+            userModel.ValidatePassword(goodPassword);
+            Assert.IsTrue(userModel.isValidPassword);
+        }
+
+        [TestMethod]
+        public void CheckReadOnceLogicOnPassword()
+        {
+            UserModel userModel = new UserModel();
+            string goodPassword = "mckinninLloyd12";
+            userModel.ValidatePassword(goodPassword);
+            Assert.IsFalse(userModel.readFlag);
+            userModel.getPassword();
+            string nullString = userModel.getPassword();
+            Assert.IsNull(nullString);
+            Assert.IsTrue(userModel.readFlag);
         }
     }
 }
