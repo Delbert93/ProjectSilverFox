@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SilverFoxAuth.Data;
 using SilverFoxAuth.Models;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace SilverFoxAuth.Controllers
     [ApiController]
     public class LoginController : Controller
     {
+        private readonly ApplicationDbContext context;
+
         public IActionResult Index()
         {
             return View();
@@ -36,6 +39,7 @@ namespace SilverFoxAuth.Controllers
                     //        return RedirectToAction("UserDashBoard");
                     //    }
                     //}
+                     
                 }
                 else
                 {

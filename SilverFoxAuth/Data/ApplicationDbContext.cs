@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using SilverFoxAuth.Models;
 
 namespace SilverFoxAuth.Data
 {
@@ -12,5 +13,6 @@ namespace SilverFoxAuth.Data
         {
 
         }
+        public DbSet<UserModel> Users { get; set; }
     }
 }
