@@ -3,7 +3,7 @@ import { Input, Button, Card } from "antd";
 import "antd/dist/antd.css";
 import axios from "axios";
 import "../CSS/Login.css";
-// import UserModel from "../../../Models/UserModel";
+//import UserModel from "../../../Models/UserModel";
 
 const DEFAULT_STATE = {
   username: "",
@@ -22,12 +22,12 @@ export class Home extends Component {
   }
 
   loginClick() {
-    // let user = new UserModel(this.state.username, this.state.password);
+    //let user = new UserModel(this.state.username, this.state.password);
     //TO DO
     //check origin and syntax
     //package info
     //send to api
-    axios.get("LOGIN_API").then((res) => {
+      axios.post("http://localhost:64024/api/Login").then((res) => {
       const isValidUser = res.status;
       this.setState({ isValidUser });
     });

@@ -12,8 +12,6 @@ namespace SilverFoxAuth.Controllers
     [ApiController]
     public class LoginController : Controller
     {
-        private readonly ApplicationDbContext context;
-
         public IActionResult Index()
         {
             return View();
@@ -25,29 +23,28 @@ namespace SilverFoxAuth.Controllers
         {
             if (ModelState.IsValid)
             {
-                string username = "";
-                string password = "";
-                //if (User.ValidateUsername(username) && User.ValidatePassword(password))
-                //{
-                //    //using (DB_Entities db = new DB_Entities())
-                //    //{
-                //    //    var obj = db.UserProfiles.Where(a => a.UserName.Equals(User.username) && a.Password.Equals(User.password)).FirstOrDefault();
-                //    //    if (obj != null)
-                //    //    {
-                //    //        Session["UserID"] = obj.UserId.ToString();
-                //    //        Session["UserName"] = obj.UserName.ToString();
-                //    //        return RedirectToAction("UserDashBoard");
-                //    //    }
-                //    //}
-                     
-                //}
-                //else
-                //{
-                //    Console.WriteLine("Back Off Hacker");
-                //}
-               
+                var display = Userloginvalues().Where(m => m.username == User.username && m.password == User.password).FirstOrDefault();
+                if (display != null)
+                {
+                    ViewBag.Status = "CORRECT UserName and Password";
+                }
+                else
+                {
+                    ViewBag.Status = "INCORRECT UserName or Password";
+                }
+                return View(User);
             }
             return View();
+        }
+        public List<UserModel> Userloginvalues()
+        {
+            List<UserModel> objModel = new List<UserModel>();
+            objModel.Add(new UserModel { username = "user1", password = "password1" });
+            objModel.Add(new UserModel { username = "user2", password = "password2" });
+            objModel.Add(new UserModel { username = "user3", password = "password3" });
+            objModel.Add(new UserModel { username = "user4", password = "password4" });
+            objModel.Add(new UserModel { username = "user5", password = "password5" });
+            return objModel;
         }
 
     }
